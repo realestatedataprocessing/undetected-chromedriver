@@ -1,0 +1,26 @@
+FROM debian:stable-slim
+
+RUN apt-get update && apt-get install -y bash python3-venv xvfb python3-pip
+
+
+RUN python3 -m venv /undetected_chromedriver
+RUN chmod +x /undetected_chromedriver/bin/activate
+RUN /undetected_chromedriver/bin/activate
+
+RUN python3 -m pip install --user --upgrade pip
+
+
+#RUN pip3 install --no-cache --upgrade pip setuptools
+
+#RUN pip install --upgrade pip
+#RUN pip3 install wheel
+
+COPY . /undetected_chromedriver/
+WORKDIR /undetected_chromedriver
+
+#RUN python setup.py bdist_wheel --universal
+RUN chmod +x /undetected_chromedriver/entrypoint.sh
+RUN pip install -r /undetected_chromedriver/requirements.txt
+
+#ENTRYPOINT ["/undetected_chromedriver/entrypoint.sh"]
+CMD ["python3", "/undetected_chromedriver/demo.py"]
