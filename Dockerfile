@@ -11,8 +11,9 @@ RUN pip install wheel
 COPY . /undetected_chromedriver/
 WORKDIR /undetected_chromedriver
 
-RUN python setup.py bdist_wheel --universal
+#RUN python setup.py bdist_wheel --universal
 RUN chmod +x /undetected_chromedriver/entrypoint.sh
+RUN pip install -r /undetected_chromedriver/requirements.txt
 
 #ENTRYPOINT ["/undetected_chromedriver/entrypoint.sh"]
 #CMD ["ipython" "/undetected_chromedriver/demo.py"]
