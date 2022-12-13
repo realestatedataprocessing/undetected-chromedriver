@@ -393,6 +393,11 @@ class Chrome(selenium.webdriver.chrome.webdriver.WebDriver):
         if not desired_capabilities:
             desired_capabilities = options.to_capabilities()
 
+        logger.debug(
+                    "Starting Detached... %s" % options.binary_location
+                )
+
+        
         if not use_subprocess:
             self.browser_pid = start_detached(
                 options.binary_location, *options.arguments

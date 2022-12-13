@@ -55,6 +55,8 @@ def _start_detached(executable, *args, writer: multiprocessing.Pipe = None):
     else:  # Python 3.2+ and Unix
         kwargs.update(start_new_session=True)
 
+    logging.getLogger(__name__).info("Running %s" % executable)
+
     # run
     p = Popen([executable, *args], stdin=PIPE, stdout=PIPE, stderr=PIPE, **kwargs)
 

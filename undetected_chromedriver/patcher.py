@@ -230,6 +230,9 @@ class Patcher(object):
         """
         logger.info("patching driver executable %s" % self.executable_path)
 
+        logger.info("Driver Path= %s " % self.executable_path)
+        logger.info("Driver Exists? %s " % os.path.exists(self.executable_path))
+
         linect = 0
         replacement = self.gen_random_cdc()
         with io.open(self.executable_path, "r+b") as fh:
