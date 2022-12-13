@@ -1,6 +1,6 @@
 FROM alpine:3.17
 
-RUN apk add --update --no-cache bash xvfb
+RUN apk add --update --no-cache bash xvfb google-chrome-stable
 RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
 
 RUN python3 -m venv /undetected_chromedriver
